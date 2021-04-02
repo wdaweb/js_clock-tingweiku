@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap" rel="stylesheet">
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: rgb(189, 230, 233);
+            font-family: 'Titillium Web', sans-serif;
+        }
+
+        #container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #clock {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            margin: auto;
+            position: relative;
+        }
+
+        #hour {
+            width: 20%;
+            height: 4px;
+            border-radius: 5px;
+            background: rgb(114, 19, 2);
+            position: absolute;
+            top: calc(50% - 2px);
+            left: 50%;
+            transform-origin: left center;
+        }
+
+        #minute {
+            width: 38%;
+            height: 4px;
+            border-radius: 5px;
+            background: rgb(255, 138, 5);
+            position: absolute;
+            top: calc(50% - 2px);
+            left: 50%;
+            transform-origin: left center;
+        }
+
+        #second {
+            width: 40%;
+            height: 2px;
+            border-radius: 5px;
+            background: rgb(223, 121, 121);
+            position: absolute;
+            top: calc(50% - 1px);
+            left: 50%;
+            transform-origin: left center;
+        }
+
+
+        #time {
+            font-size: 30px;
+            font-weight: bolder;
+            color: rgb(212, 76, 76);
+            position: absolute;
+            bottom: -50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .flower {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            position: absolute;
+            animation: animation 20s infinite;
+            box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .flower:nth-child(odd) {
+            background: rgba(253, 215, 2, 0.5);
+            animation: animationOdd 1.5s infinite;
+        }
+
+        .flower:nth-child(even) {
+            background: rgba(255, 116, 2, 0.5);
+            animation: animationEven 1.5s infinite;
+        }
+
+        .f1 {
+            top: 0%;
+            left: -15%;
+        }
+
+        .f2 {
+            top: -20%;
+            left: 15%;
+        }
+
+        .f3 {
+            top: -15%;
+            left: 50%;
+        }
+
+        .f4 {
+            top: 15%;
+            left: 70%;
+        }
+
+        .f5 {
+            top: 50%;
+            left: 65%;
+        }
+
+        .f6 {
+            top: 70%;
+            left: 35%;
+        }
+
+        .f7 {
+            top: 65%;
+            left: 0%;
+        }
+
+        .f8 {
+            top: 35%;
+            left: -20%;
+        }
+
+
+        #clockWrap {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            position: absolute;
+            background-color: rgb(241, 222, 209);
+            box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .number {
+            font-size: 25px;
+            color: rgb(212, 76, 76);
+        }
+
+        .number12 {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 1px;
+            height: 290px;
+        }
+
+        .number12::before {
+            content: '12';
+            position: absolute;
+            transform: translateX(-50%);
+        }
+
+        .number1 {
+            position: absolute;
+            top: 7%;
+            right: 31%;
+        }
+
+        .number1::before {
+            content: '1';
+            position: absolute;
+        }
+
+        .number2 {
+            position: absolute;
+            top: 22%;
+            right: 15%;
+        }
+
+        .number2::before {
+            content: '2';
+            position: absolute;
+
+        }
+
+        .number3 {
+            position: absolute;
+            top: 43.5%;
+            right: 9%;
+        }
+
+        .number3::before {
+            content: '3';
+            position: absolute;
+
+        }
+
+        .number4 {
+            position: absolute;
+            top: 65%;
+            right: 15%;
+        }
+
+        .number4::before {
+            content: '4';
+            position: absolute;
+
+        }
+
+        .number5 {
+            position: absolute;
+            top: 80%;
+            right: 31%;
+        }
+
+        .number5::before {
+            content: '5';
+            position: absolute;
+
+        }
+
+        .number6 {
+            position: absolute;
+            top: 86%;
+            right: 52%;
+        }
+
+        .number6::before {
+            content: '6';
+            position: absolute;
+
+        }
+
+        .number7 {
+            position: absolute;
+            top: 80%;
+            right: 74%;
+        }
+
+        .number7::before {
+            content: '7';
+            position: absolute;
+        }
+
+        .number8 {
+            position: absolute;
+            top: 65%;
+            right: 89%;
+        }
+
+        .number8::before {
+            content: '8';
+            position: absolute;
+        }
+
+        .number9 {
+            position: absolute;
+            top: 43.5%;
+            right: 95.5%;
+        }
+
+        .number9::before {
+            content: '9';
+            position: absolute;
+        }
+
+        .number10 {
+            position: absolute;
+            top: 22%;
+            right: 91%;
+        }
+
+        .number10::before {
+            content: '10';
+            position: absolute;
+        }
+
+        .number11 {
+            position: absolute;
+            top: 7%;
+            right: 77%;
+        }
+
+        .number11::before {
+            content: '11';
+            position: absolute;
+        }
+
+
+
+        @keyframes animationOdd {
+            50% {
+                background: rgba(255, 116, 2, 0.5);
+            }
+        }
+
+        @keyframes animationEven {
+            50% {
+                background: rgba(253, 215, 2, 0.5);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id=container>
+        <div id="clock">
+            <div class="flower f1"></div>
+            <div class="flower f2"></div>
+            <div class="flower f3"></div>
+            <div class="flower f4"></div>
+            <div class="flower f5"></div>
+            <div class="flower f6"></div>
+            <div class="flower f7"></div>
+            <div class="flower f8"></div>
+            <div id="clockWrap"></div>
+            <div class="number number12"></div>
+            <div class="number number1"></div>
+            <div class="number number2"></div>
+            <div class="number number3"></div>
+            <div class="number number4"></div>
+            <div class="number number5"></div>
+            <div class="number number6"></div>
+            <div class="number number7"></div>
+            <div class="number number8"></div>
+            <div class="number number9"></div>
+            <div class="number number10"></div>
+            <div class="number number11"></div>
+            <div id="hour"></div>
+            <div id="minute"></div>
+            <div id="second"></div>
+            <div id="time"></div>
+        </div>
+    </div>
+    <script>
+        const now = new Date();
+        const hour = document.getElementById('hour')
+        const minute = document.getElementById('minute')
+        const second = document.getElementById('second')
+
+        const setText = () => {
+            const now = new Date();
+            const h = now.getHours();
+            const m = now.getMinutes();
+            const s = now.getSeconds();
+
+            time.innerText = h + " : " + m + " : " + s;
+        }
+
+        const update = () => {
+            const now = new Date()
+            hour.style.transform = `rotate(${now.getHours() * 30 - 90}deg)`
+            minute.style.transform = `rotate(${now.getMinutes() * 6 - 90}deg)`
+            second.style.transform = `rotate(${now.getSeconds() * 6 - 90}deg)`
+        }
+
+        setInterval(update, 1000)
+        update()
+        setInterval(setText, 1000);
+        setText();
+
+    </script>
+</body>
+
+</html>
